@@ -1,0 +1,19 @@
+{
+  "info": {
+    "name": "clients"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  },
+  "connection": "default",
+  "collectionName": "clients"
+}
