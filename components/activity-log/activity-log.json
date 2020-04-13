@@ -1,0 +1,14 @@
+{
+  "connection": "default",
+  "collectionName": "components_activity_log_activity_logs",
+  "info": {
+    "name": "activityLog",
+    "icon": "chart-line"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "string"
+    }
+  }
+}

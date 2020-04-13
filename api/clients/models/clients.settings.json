@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "clients",
+  "info": {
+    "name": "clients"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "phoneMobile": {
+      "type": "string"
+    },
+    "phoneHome": {
+      "type": "string"
+    },
+    "activityLog": {
+      "type": "component",
+      "repeatable": true,
+      "component": "activity-log.activity-log"
+    },
+    "createdBy": {
+      "via": "createdClients",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "modifiedBy": {
+      "via": "modifiedClients",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "assignedTo": {
+      "via": "assignedClients",
+      "plugin": "users-permissions",
+      "collection": "user",
+      "dominant": true
+    }
+  }
+}

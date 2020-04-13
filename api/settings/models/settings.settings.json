@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "settings",
+  "info": {
+    "name": "settings"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "fields": {
+      "type": "json"
+    },
+    "services": {
+      "type": "json"
+    }
+  }
+}
