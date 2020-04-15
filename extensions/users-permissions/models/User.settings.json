@@ -1,5 +1,4 @@
 {
-  "kind": "collectionType",
   "connection": "default",
   "collectionName": "users-permissions_user",
   "info": {
@@ -66,9 +65,15 @@
       "collection": "clients",
       "via": "assignedTo"
     },
-    "fullName": {
-      "type": "string",
-      "required": true
+    "company": {
+      "via": "users",
+      "model": "company"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
     }
   }
 }
