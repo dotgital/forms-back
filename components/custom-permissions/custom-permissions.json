@@ -21,6 +21,9 @@
         "No",
         "Assigned"
       ]
+    },
+    "contentTypeName": {
+      "type": "string"
     }
   }
 }
