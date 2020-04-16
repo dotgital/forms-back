@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "companies",
   "info": {
@@ -13,9 +14,9 @@
       "type": "string"
     },
     "users": {
+      "via": "company",
       "plugin": "users-permissions",
-      "collection": "user",
-      "via": "company"
+      "collection": "user"
     }
   }
 }

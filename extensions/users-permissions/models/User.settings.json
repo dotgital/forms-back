@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "users-permissions_user",
   "info": {
@@ -66,14 +67,19 @@
       "via": "assignedTo"
     },
     "company": {
-      "via": "users",
-      "model": "company"
+      "model": "company",
+      "via": "users"
     },
     "firstName": {
       "type": "string"
     },
     "lastName": {
       "type": "string"
+    },
+    "customPermissions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom-permissions.custom-permissions"
     }
   }
 }
