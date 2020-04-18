@@ -22,22 +22,14 @@ module.exports = {
         return sanitizeEntity(entity, { model: strapi.models.clients });
     },
 
-    async update(ctx) {
-        let entity;
-        const currentUser = ctx.state.user;
-        if (ctx.is('multipart')) {
-          const { data, files } = parseMultipartData(ctx);
-          ctx.data.modifiedBy = currentUser.id;
-          entity = await strapi.services.clients.update(ctx.params, data, {
-            files,
-          });
-        } else {
-          ctx.request.body.modifiedBy = currentUser.id;
-          entity = await strapi.services.clients.update(
-            ctx.params,
-            ctx.request.body
-          );
-        }
-        return sanitizeEntity(entity, { model: strapi.models.clients });
+    async update(ctx){
+      let entities;
+      if (ctx.query._q) {
+        entities = await strapi.services.users.search(ctx.query);
+      } else {
+        entities = await strapi.services.users.find(ctx.query);
+      }
+
+      return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.restaurant }));
     },
 };

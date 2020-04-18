@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/custom-permissions",
+      "handler": "custom-permissions.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/custom-permissions/count",
+      "handler": "custom-permissions.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/custom-permissions/:id",
+      "handler": "custom-permissions.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/set-permissions",
+      "handler": "custom-permissions.setPermission",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/custom-permissions",
+      "handler": "custom-permissions.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/custom-permissions/:id",
+      "handler": "custom-permissions.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/custom-permissions/:id",
+      "handler": "custom-permissions.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

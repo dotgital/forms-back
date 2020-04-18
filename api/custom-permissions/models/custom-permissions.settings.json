@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_permissions",
+  "info": {
+    "name": "customPermissions"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "users_view": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ],
+      "default": "All",
+      "private": false,
+      "required": true
+    },
+    "users_edit": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ],
+      "default": "All",
+      "required": true
+    },
+    "clients_view": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ],
+      "default": "All"
+    },
+    "clients_edit": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ],
+      "default": "All",
+      "required": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "custom_permission"
+    }
+  }
+}

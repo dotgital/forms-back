@@ -76,10 +76,9 @@
     "lastName": {
       "type": "string"
     },
-    "customPermissions": {
-      "type": "component",
-      "repeatable": true,
-      "component": "custom-permissions.custom-permissions"
+    "custom_permission": {
+      "via": "user",
+      "model": "custom-permissions"
     }
   }
 }
