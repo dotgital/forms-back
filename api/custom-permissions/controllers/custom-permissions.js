@@ -12,23 +12,26 @@ sanitizeEntity(user, {
 
 module.exports = {
   find: async (ctx) => {
-    let users;
-    users = await strapi.plugins['users-permissions'].services.user.fetchAll();
-    let data = users.map(sanitizeUser);
+    let users  = await strapi.plugins['users-permissions'].services.user.fetchAll();
+    let data = [];
 
-    data = await Promise.all(data.map(async (user) => {
+    for (const user of users) {
+      let custom_permission;
       if(!user.custom_permission){
-        await strapi.services['custom-permissions'].create({user: user.id});
+        custom_permission = await strapi.services['custom-permissions'].create({user: user.id});
+      } else {
+        custom_permission = user.custom_permission;
       }
-      const userPermissions = {
+      const userPermission = {
         id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
-        custom_permission: user.custom_permission
+        custom_permission: custom_permission
       }
-      return userPermissions;
-    }));
-    ctx.send(data);
+      data.push(userPermission);
+    }
+
+    return data;
   },
 
   setPermission: async (ctx) => {
@@ -38,9 +41,6 @@ module.exports = {
       if(res.custom_permission.id){
         const id = res.custom_permission.id;
         entity = strapi.services['custom-permissions'].update({ id }, res.custom_permission);
-      } else {
-        res.custom_permission.user = res.id
-        entity = strapi.services['custom-permissions'].create(res.custom_permission);
       }
     })
     return ctx.request.body;
