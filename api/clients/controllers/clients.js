@@ -8,6 +8,29 @@ const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
  */
 
 module.exports = {
+
+  async find(ctx) {
+    let entities;
+    const id = ctx.state.user.custom_permission
+    const entity = await strapi.services['custom-permissions'].findOne({ id });
+    ctx.query.assignedTo_in = [ctx.state.user.id];
+
+    console.log(ctx.query);
+
+    if (ctx.query._q) {
+      entities = await strapi.query('clients').search(ctx.query);
+    } else {
+      entities = await strapi.services.clients.find(ctx.query);
+      // entities = await strapi.query('clients').find({ assignedTo_in: [ctx.state.user.id]});
+    }
+
+    // entities.forEach(element => {
+    //   console.log(element.assignedTo)
+    // });
+
+    return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.clients }));
+  },
+
     async create(ctx) {
         let entity;
         const currentUser = ctx.state.user;
@@ -22,14 +45,14 @@ module.exports = {
         return sanitizeEntity(entity, { model: strapi.models.clients });
     },
 
-    async update(ctx){
-      let entities;
-      if (ctx.query._q) {
-        entities = await strapi.services.users.search(ctx.query);
-      } else {
-        entities = await strapi.services.users.find(ctx.query);
-      }
+    // async update(ctx){
+    //   let entities;
+    //   if (ctx.query._q) {
+    //     entities = await strapi.services.users.search(ctx.query);
+    //   } else {
+    //     entities = await strapi.services.users.find(ctx.query);
+    //   }
 
-      return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.restaurant }));
-    },
+    //   return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.restaurant }));
+    // },
 };
