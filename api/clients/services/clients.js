@@ -5,4 +5,9 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+  search(params) {
+    console.log(params)
+    return strapi.query('clients').search(params);
+  },
+};
