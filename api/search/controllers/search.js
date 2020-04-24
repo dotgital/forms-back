@@ -26,14 +26,24 @@ module.exports = {
       }
       return fields;
     })
-    console.log(users);
     users = users.filter(user => {
-        return Object.keys(user).some(k => user[k].toLowerCase().includes(ctx.query._q.toLowerCase()))
+      let propertyMatch;
+      const filteredUser = Object.keys(user).some(k => {
+        if(user[k].toLowerCase().includes(ctx.query._q.toLowerCase())){
+          propertyMatch = k;
+          return k;
+        }
+      })
+      user.matchProperty = propertyMatch;
+      user.matchValue = user[propertyMatch]
+      console.log(filteredUser);
+      return filteredUser
     });
 
     // clients
-    clients = await strapi.services.clients.search(ctx.query);
-
+    // clients = await strapi.services.search.customSearch(ctx.query);
+    // clients = await strapi.query('clients').find({ _q: ctx.query._q, _limit: 100 })
+    clients = await strapi.services.clients.search(ctx.query)
     if (permissions.clients_view === 'onlyAssigned') {
       clients = clients.filter(res => {
         if (res.assignedTo.some(el => el.id === ctx.state.user.id)) {
@@ -42,12 +52,20 @@ module.exports = {
       })
     }
     clients = clients.map(client => {
+      let propertyMatch;
+      Object.keys(client).some(k => {
+        if(typeof client[k] == 'string' && client[k].toLowerCase().includes(ctx.query._q.toLowerCase())){
+          propertyMatch = k;
+        }
+      })
       const fields = {
         id: client.id,
         model: 'Client',
         firstName: client.firstName,
         lastName: client.lastName,
-        email: client.email
+        email: client.email,
+        matchProperty: propertyMatch,
+        matchValue: client[propertyMatch]
       }
       return fields;
     })
