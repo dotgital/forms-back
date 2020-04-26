@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `settings` model.
+ * Lifecycle callbacks for the `fields-settings` model.
  */
 
 module.exports = {

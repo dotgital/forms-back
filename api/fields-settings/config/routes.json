@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fields-settings",
+      "handler": "fields-settings.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fields-settings",
+      "handler": "fields-settings.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fields-settings",
+      "handler": "fields-settings.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

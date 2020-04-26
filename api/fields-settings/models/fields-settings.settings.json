@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "fields_settings",
+  "info": {
+    "name": "FieldsSettings"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "fields": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fields.fields"
+    }
+  }
+}

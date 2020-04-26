@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_fields_fields",
+  "info": {
+    "name": "fields",
+    "icon": "table"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "column": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "fieldType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "options": {
+      "type": "json"
+    },
+    "tablePosition": {
+      "type": "string"
+    },
+    "tableVisible": {
+      "type": "boolean"
+    }
+  }
+}
