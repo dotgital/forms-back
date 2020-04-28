@@ -56,7 +56,6 @@ module.exports = {
     return sanitizeEntity(entity, { model: strapi.models.clients });
   },
 
-
   async create(ctx) {
     let entity;
     console.log(typeof ctx.request.body.assignedTo);

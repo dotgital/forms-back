@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_list_view_list_views",
+  "info": {
+    "name": "listView",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "required": true
+    },
+    "module": {
+      "type": "string"
+    },
+    "tableVisible": {
+      "type": "boolean"
+    },
+    "tablePosition": {
+      "type": "integer"
+    }
+  }
+}

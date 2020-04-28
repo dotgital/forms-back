@@ -50,9 +50,9 @@
       "required": true
     },
     "user": {
+      "via": "custom_permission",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "custom_permission"
+      "model": "user"
     }
   }
 }

@@ -37,6 +37,9 @@
     },
     "tableVisible": {
       "type": "boolean"
+    },
+    "module": {
+      "type": "string"
     }
   }
 }

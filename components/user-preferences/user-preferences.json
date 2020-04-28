@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_user_preferences_user_preferences",
+  "info": {
+    "name": "userPreferences",
+    "icon": "calculator"
+  },
+  "options": {},
+  "attributes": {
+    "listView": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-view.list-view"
+    }
+  }
+}
