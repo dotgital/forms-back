@@ -24,11 +24,6 @@
     "fieldType": {
       "type": "string"
     },
-    "name": {
-      "type": "string",
-      "required": true,
-      "unique": false
-    },
     "options": {
       "type": "json"
     },
@@ -37,9 +32,6 @@
     },
     "tableVisible": {
       "type": "boolean"
-    },
-    "module": {
-      "type": "string"
     },
     "fieldName": {
       "type": "string"
