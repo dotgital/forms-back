@@ -27,7 +27,7 @@
     "name": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "options": {
       "type": "json"
@@ -39,6 +39,9 @@
       "type": "boolean"
     },
     "module": {
+      "type": "string"
+    },
+    "fieldName": {
       "type": "string"
     }
   }

@@ -13,16 +13,19 @@ module.exports = {
     const module = ctx.query.module;
     const globalPreferences = await strapi.services['fields-settings'].find()
     const userPreferences = ctx.state.user.userPreferences;
+    const listView = `${module}ListView`
 
-    response = globalPreferences;
+    response = globalPreferences.fields.filter(field => field.module === module);
 
     if(settingType == 'columns' ){
-      if(userPreferences && userPreferences.listView){
-        response.fields = globalPreferences.fields.map(res => {
-          const userPref = userPreferences.listView.reduce((acc, pref) => {
-            pref.fieldName === res.name ? acc = pref : false;
+      if(userPreferences && userPreferences[listView]){
+        response = response.map(res => {
+          const userPref = userPreferences[listView].reduce((acc, pref) => {
+            pref.fieldName === res.name && pref.module === module ? acc = pref : false;
             return acc
           }, {})
+          res.id = userPref.id
+          res.module = module
           res.tableVisible = userPref.tableVisible
           res.tablePosition = userPref.tablePosition
           res.userFieldId = userPref.id ? userPref.id : null;
@@ -30,11 +33,15 @@ module.exports = {
           // console.log('global pref', res);
           return res
         })
-        // console.log(userPreferences.listView);
+        // console.log(userPreferences[listView]);
       }
     }
 
     // console.log(response);
     return response;
   },
+
+  async userPreferences(ctx) {
+    console.log(ctx)
+  }
 };

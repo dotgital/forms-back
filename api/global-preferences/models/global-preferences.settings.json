@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_preferences",
+  "info": {
+    "name": "globalPreferences"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "users": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fields.fields"
+    },
+    "clients": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fields.fields"
+    }
+  }
+}

@@ -6,7 +6,12 @@
   },
   "options": {},
   "attributes": {
-    "listView": {
+    "clientsListView": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-view.list-view"
+    },
+    "usersListView": {
       "type": "component",
       "repeatable": true,
       "component": "list-view.list-view"

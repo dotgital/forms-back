@@ -84,6 +84,9 @@
       "type": "component",
       "repeatable": false,
       "component": "user-preferences.user-preferences"
+    },
+    "recordName": {
+      "type": "string"
     }
   }
 }

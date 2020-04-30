@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/fields-settings-users",
+      "handler": "fields-settings.userPreferences",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/fields-settings",
       "handler": "fields-settings.delete",

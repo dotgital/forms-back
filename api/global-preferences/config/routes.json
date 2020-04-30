@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/global-preferences",
+      "handler": "global-preferences.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/global-preferences",
+      "handler": "global-preferences.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/global-preferences",
+      "handler": "global-preferences.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
