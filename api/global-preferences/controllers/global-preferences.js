@@ -36,6 +36,7 @@ module.exports = {
       resp.usersPrefId = userPreferences.id;
       response = resp;
     }
+    console.log('final response: ', response);
     return response;
   }
 
