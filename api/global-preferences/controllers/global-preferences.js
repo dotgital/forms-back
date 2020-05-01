@@ -19,32 +19,33 @@ module.exports = {
       response = response[moduleName]
     }
 
-    if(settingType == 'columns' && userPreferences && userPreferences[listView]){
-      const fields = response.map(async (field)=> {
-        let userField = {
-          fieldName: field.fieldName,
-          label: field.label,
-          tablePosition: field.tablePosition,
-          tableVisible: field.tableVisible,
-          fieldType: field.fieldType,
-        };
-        for await (const userPref of userPreferences[listView]) {
-          if (userPref.fieldName === field.fieldName){
-            userField.id = userPref.id;
-            userField.tableVisible = userPref.tableVisible;
-            userField.tablePosition = userPref.tablePosition;
+    if(settingType == 'columns'){
+      if (userPreferences && userPreferences[listView]) {
+        const fields = response.map(async (field)=> {
+          let userField = {
+            fieldName: field.fieldName,
+            label: field.label,
+            tablePosition: field.tablePosition,
+            tableVisible: field.tableVisible,
+            fieldType: field.fieldType,
+          };
+          for await (const userPref of userPreferences[listView]) {
+            if (userPref.fieldName === field.fieldName){
+              userField.id = userPref.id;
+              userField.tableVisible = userPref.tableVisible;
+              userField.tablePosition = userPref.tablePosition;
+            }
           }
-        }
-        return userField
-      })
-      resp.fields = await Promise.all(fields)
-      resp.usersPrefId = userPreferences.id;
-      response = resp;
-    } else {
-      resp.fields = response;
-      response = resp;
+          return userField
+        })
+        resp.fields = await Promise.all(fields)
+        resp.usersPrefId = userPreferences.id;
+        response = resp;
+      } else {
+        resp.fields = response;
+        response = resp;
+      }
     }
-
     return response;
   }
 };
