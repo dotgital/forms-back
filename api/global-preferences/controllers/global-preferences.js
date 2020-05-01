@@ -12,6 +12,7 @@ module.exports = {
     const moduleName = ctx.query.module;
     const userPreferences = ctx.state.user.userPreferences;
     const listView = `${moduleName}ListView`
+    const resp = {}
 
     response = await strapi.services['global-preferences'].find();
     if(moduleName){
@@ -19,34 +20,31 @@ module.exports = {
     }
 
     if(settingType == 'columns' && userPreferences && userPreferences[listView]){
-      const resp = {}
-      response = response.map(res => {
-        const userPref = userPreferences[listView].reduce((acc, pref) => {
-          pref.fieldName === res.name && pref.module === moduleName ? acc = pref : false;
-          return acc
-        }, {})
-        res.id = userPref.id
-        res.module = moduleName
-        res.tableVisible = userPref.tableVisible
-        res.tablePosition = userPref.tablePosition
-        res.userFieldId = userPref.id ? userPref.id : null;
-        return res
+      const fields = response.map(async (field)=> {
+        let userField = {
+          fieldName: field.fieldName,
+          label: field.label,
+          tablePosition: field.tablePosition,
+          tableVisible: field.tableVisible,
+          fieldType: field.fieldType,
+        };
+        for await (const userPref of userPreferences[listView]) {
+          if (userPref.fieldName === field.fieldName){
+            userField.id = userPref.id;
+            userField.tableVisible = userPref.tableVisible;
+            userField.tablePosition = userPref.tablePosition;
+          }
+        }
+        return userField
       })
-      resp.fields = response;
+      resp.fields = await Promise.all(fields)
       resp.usersPrefId = userPreferences.id;
       response = resp;
+    } else {
+      resp.fields = response;
+      response = resp;
     }
-    console.log('final response: ', response);
+
     return response;
   }
-
-  // async update(ctx){
-  //   let response;
-  //   const settingType = ctx.query.type;
-  //   const moduleName = ctx.query.module;
-  //   console.log(ctx.request.body);
-  //   response = await strapi.services['global-preferences'].update({[moduleName]: ctx.request.body})
-  //   return ctx.request.body
-  // },
-
 };
