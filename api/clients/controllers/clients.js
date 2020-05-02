@@ -38,10 +38,15 @@ module.exports = {
   },
 
   async findOne(ctx) {
+    let entity;
     const { id } = ctx.params;
     const permissionId = ctx.state.user.custom_permission
     const permissions = await strapi.services['custom-permissions'].findOne({ id: permissionId });
-    const entity = await strapi.services.clients.findOne({ id });
+    try {
+      entity = await strapi.services.clients.findOne({ id });
+    } catch (error) {
+      return ctx.badRequest(null, [error.message])
+    }
 
     if (permissions.clients_view === 'onlyAssigned') {
       if(!entity.assignedTo.some(el => el.id === ctx.state.user.id)){
