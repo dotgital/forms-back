@@ -36,7 +36,7 @@ module.exports = {
       })
       user.matchProperty = propertyMatch;
       user.matchValue = user[propertyMatch]
-      console.log(filteredUser);
+      // console.log(filteredUser);
       return filteredUser
     });
 
