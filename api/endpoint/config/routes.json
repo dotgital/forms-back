@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "PUT",
+      "path": "/user-update/:id",
+      "handler": "endpoint.userUpdate",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -17,7 +17,7 @@ module.exports = {
     if (permissions.clients_view === 'onlyAssigned'){
       ctx.query.assignedTo_in = [ctx.state.user.id];
     } else if (permissions.clients_view === 'None') {
-      ctx.response.forbidden({message: 'You dont have access to this records'});
+      ctx.response.forbidden({message: `You don't have access to this records`});
       return ctx.response;
     }
 
@@ -50,11 +50,11 @@ module.exports = {
 
     if (permissions.clients_view === 'onlyAssigned') {
       if(!entity.assignedTo.some(el => el.id === ctx.state.user.id)){
-        ctx.response.forbidden({message: 'You dont have access to this records'});
+        ctx.response.forbidden({message: `You don't have access to this records`});
         return ctx.response;
       }
     } else if (permissions.clients_view === 'None') {
-      ctx.response.forbidden({message: 'You dont have access to this records'});
+      ctx.response.forbidden({message: `You don't have access to this records`});
       return ctx.response;
     }
 
