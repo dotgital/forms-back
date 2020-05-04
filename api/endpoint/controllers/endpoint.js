@@ -54,10 +54,18 @@ module.exports = {
       entities = await strapi.services[module].find(ctx.query)
     }
 
+    console.log(columns);
     entities = entities.map(entity => {
       Object.keys(entity).forEach(key => {
         if(!columns.includes(key)){
           delete entity[key]
+        } else {
+          if(Array.isArray(entity[key])){
+            entity[key] = entity[key].map(ent => {
+              const {id, recordName} = ent
+              return {id, recordName}
+            });
+          }
         }
       })
       return entity;
