@@ -63,6 +63,7 @@ module.exports = {
           if(Array.isArray(entity[key])){
             entity[key] = entity[key].map(ent => {
               const {id, recordName} = ent
+              // return ` ${recordName}`
               return {id, recordName}
             });
           }
