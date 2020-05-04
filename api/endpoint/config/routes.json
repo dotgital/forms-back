@@ -7,6 +7,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/list/:module",
+      "handler": "endpoint.list",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
