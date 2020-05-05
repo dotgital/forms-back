@@ -22,7 +22,7 @@
   },
   "cors": {
     "enabled": true,
-    "headers": ["Content-Type", "Authorization", "X-Frame-Options", "multipart/form-data"]
+    "origin": "https://*.dotgital.com, http://localhost, http://localhost:4200"
   },
   "ip": {
     "enabled": false,
