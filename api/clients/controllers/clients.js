@@ -11,8 +11,14 @@ module.exports = {
 
   async find(ctx) {
     let entities;
-    const permissionId = ctx.state.user.custom_permission
-    const permissions = await strapi.services['custom-permissions'].findOne({ id: permissionId });
+    // const permissionId = ctx.state.user.custom_permission
+    const permissions = ctx.state.user.userPermissions.permissions.reduce((acc, curr) => {
+      if(curr.module === 'clients'){
+        acc = curr;
+        return acc;
+      }
+    }, {})
+
 
     if (permissions.clients_view === 'onlyAssigned'){
       ctx.query.assignedTo_in = [ctx.state.user.id];
@@ -63,7 +69,6 @@ module.exports = {
 
   async create(ctx) {
     let entity;
-    console.log(typeof ctx.request.body.assignedTo);
     if (typeof ctx.request.body.assignedTo === 'string'){
       ctx.request.body.assignedTo = [];
     }

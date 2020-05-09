@@ -15,9 +15,15 @@ module.exports = {
     const { id } = ctx.params;
     const { role } = ctx.state.user;
     const { defaultPermissions } = await strapi.services['global-preferences'].find();
+    const permissions = ctx.state.user.userPermissions.permissions.reduce((acc, curr) => {
+      if(curr.module === 'users'){
+        acc = curr;
+        return acc;
+      }
+    }, {})
 
     try {
-      if(role.type === 'administrator') {
+      if(role.type === 'administrator' || permissions.view !== 'None') {
         entity = await strapi.plugins['users-permissions'].services.user.fetch({id});
         const { userPermissions } = entity
         const permissions = await Promise.all(defaultPermissions.permissions.map(async perm => {
@@ -33,7 +39,11 @@ module.exports = {
           }
           return perm
         }))
-        entity.userPermissions = {permissions}
+        if(role.type === 'administrator'){
+          entity.userPermissions = {permissions}
+        } else {
+          entity.userPermissions = {}
+        }
       }
     }
     catch (err) {
@@ -55,6 +65,7 @@ module.exports = {
         if(role !== 'administrator'){
           delete ctx.request.body.role
           delete ctx.request.body.blocked
+          delete ctx.request.body.userPermissions
         }
         console.log(ctx.request.body);
         entity = await strapi.plugins['users-permissions'].services.user.edit({id: recordId}, ctx.request.body);
@@ -125,15 +136,19 @@ module.exports = {
     let count;
     const module = ctx.params.module;
     const columns = ctx.request.body.columns
-    const permissionId = ctx.state.user.custom_permission
-    const permissions = await strapi.services['custom-permissions'].findOne({ id: permissionId });
 
-    if (permissions.clients_view === 'onlyAssigned'){
+    // Get the user permissions from the user record
+    const permissions = await ctx.state.user.userPermissions.permissions.reduce((acc, curr) => {
+      if(curr.module === ctx.params.module){ acc = curr; }
+      return acc;
+    }, {})
+
+    if (permissions.view === 'onlyAssigned'){
       ctx.query = {
         ...ctx.query,
         assignedTo_in: [ctx.state.user.id]
       };
-    } else if (permissions.clients_view === 'None') {
+    } else if (permissions.view === 'None') {
       ctx.response.forbidden({message: `You don't have access to this records`});
       return ctx.response;
     }
@@ -147,8 +162,8 @@ module.exports = {
       entities = await strapi.services[module].find(ctx.query)
     }
 
-    console.log(columns);
-    entities = entities.map(entity => {
+    // iterate through the response and remove the unnecessary columns
+    entities = await Promise.all(entities.map(entity => {
       Object.keys(entity).forEach(key => {
         if(!columns.includes(key)){
           delete entity[key]
@@ -156,16 +171,13 @@ module.exports = {
           if(Array.isArray(entity[key])){
             entity[key] = entity[key].map(ent => {
               const {id, recordName} = ent
-              // return ` ${recordName}`
               return {id, recordName}
             });
           }
         }
       })
       return entity;
-    });
-
-    entities = await Promise.all(entities);
+    }));
 
     return {count, entities};
   },
