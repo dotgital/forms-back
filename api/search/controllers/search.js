@@ -20,6 +20,7 @@ module.exports = {
       const fields = {
         id: user.id,
         model: 'User',
+        phoneNumber: user.phoneNumber,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email
@@ -29,7 +30,7 @@ module.exports = {
     users = users.filter(user => {
       let propertyMatch;
       const filteredUser = Object.keys(user).some(k => {
-        if(user[k].toLowerCase().includes(ctx.query._q.toLowerCase())){
+        if(user[k] && user[k].toLowerCase().includes(ctx.query._q.toLowerCase())){
           propertyMatch = k;
           return k;
         }

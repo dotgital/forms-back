@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_user_permissions_permissions",
+  "info": {
+    "name": "permissions",
+    "icon": "lock-open"
+  },
+  "options": {},
+  "attributes": {
+    "module": {
+      "type": "string"
+    },
+    "create": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ]
+    },
+    "view": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ]
+    },
+    "edit": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ]
+    },
+    "delete": {
+      "type": "enumeration",
+      "enum": [
+        "All",
+        "None",
+        "onlyAssigned"
+      ]
+    }
+  }
+}

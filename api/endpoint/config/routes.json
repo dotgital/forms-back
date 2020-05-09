@@ -1,17 +1,41 @@
 {
   "routes": [
     {
+      "method": "GET",
+      "path": "/find-one-user/:id",
+      "handler": "endpoint.findOneUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
-      "path": "/user-update/:id",
-      "handler": "endpoint.userUpdate",
+      "path": "/update-user/:id",
+      "handler": "endpoint.updateUser",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/list/:module",
-      "handler": "endpoint.list",
+      "path": "/table-data/:module",
+      "handler": "endpoint.tableData",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/find-users-permissions/",
+      "handler": "endpoint.findUsersPermissions",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/set-users-permissions/",
+      "handler": "endpoint.setUsersPermissions",
       "config": {
         "policies": []
       }

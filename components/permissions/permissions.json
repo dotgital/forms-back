@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_permissions_permissions",
+  "info": {
+    "name": "permissions",
+    "icon": "key"
+  },
+  "options": {},
+  "attributes": {
+    "permissions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-permissions.permissions"
+    }
+  }
+}

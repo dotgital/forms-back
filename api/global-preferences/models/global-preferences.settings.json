@@ -18,6 +18,11 @@
       "type": "component",
       "repeatable": true,
       "component": "fields.fields"
+    },
+    "defaultPermissions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "permissions.permissions"
     }
   }
 }

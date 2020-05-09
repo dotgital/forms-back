@@ -96,6 +96,20 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "office": {
+      "type": "string"
+    },
+    "jobPosition": {
+      "type": "string"
+    },
+    "userPermissions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "permissions.permissions"
     }
   }
 }
