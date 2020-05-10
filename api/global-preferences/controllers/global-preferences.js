@@ -15,7 +15,7 @@ module.exports = {
     const resp = {}
 
     response = await strapi.services['global-preferences'].find();
-    if(moduleName){
+    if(moduleName && moduleName !== 'all'){
       response = response[moduleName]
     }
 
@@ -46,6 +46,15 @@ module.exports = {
         response = resp;
       }
     }
+
+    if(settingType == 'defaultPermissions'){
+      const roles = await strapi.plugins['users-permissions'].services.userspermissions.getRoles();
+      response = {
+        defaultPermissions: response.defaultPermissions,
+        roles: roles.filter(role => role.type !== 'public')
+      }
+    }
+
     return response;
   }
 };
