@@ -15,15 +15,21 @@ module.exports = {
     const { id } = ctx.params;
     const { role } = ctx.state.user;
     const { defaultPermissions } = await strapi.services['global-preferences'].find();
-    const permissions = ctx.state.user.userPermissions.permissions.reduce((acc, curr) => {
-      if(curr.module === 'users'){
-        acc = curr;
-        return acc;
+    let currUserPermissions = await ctx.state.user.userPermissions.permissions;
+    for await (const currUserPerm of currUserPermissions) {
+      if(currUserPerm.mudule === 'users'){
+        currUserPermissions = currUserPerm;
       }
-    }, {})
+    }
+    // reduce((acc, curr) => {
+    //   if(curr.module === 'users'){
+    //     acc = curr;
+    //     return acc;
+    //   }
+    // }, {})
 
     try {
-      if(role.type === 'administrator' || permissions.view !== 'None') {
+      if(role.type === 'administrator' || currUserPermissions.view !== 'None') {
         entity = await strapi.plugins['users-permissions'].services.user.fetch({id});
         const { userPermissions } = entity
         const permissions = await Promise.all(defaultPermissions.permissions.map(async perm => {
