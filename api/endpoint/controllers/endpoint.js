@@ -67,13 +67,11 @@ module.exports = {
 
     if(recordId === userId || role === 'administrator'){
       try {
-        console.log(ctx.request.body);
         if(role !== 'administrator'){
           delete ctx.request.body.role
           delete ctx.request.body.blocked
           delete ctx.request.body.userPermissions
         }
-        console.log(ctx.request.body);
         entity = await strapi.plugins['users-permissions'].services.user.edit({id: recordId}, ctx.request.body);
       } catch (err) {
         console.log(err)
