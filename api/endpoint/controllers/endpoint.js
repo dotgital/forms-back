@@ -65,13 +65,18 @@ module.exports = {
     const userId = ctx.state.user.id;
     const role = ctx.state.user.role.type;
 
-    if(recordId === userId || role === 'administrator'){
+    if(recordId === userId && role !== 'administrator') {
       try {
-        if(role !== 'administrator'){
-          delete ctx.request.body.role
-          delete ctx.request.body.blocked
-          delete ctx.request.body.userPermissions
-        }
+        delete ctx.request.body.role
+        delete ctx.request.body.blocked
+        delete ctx.request.body.userPermissions
+        entity = await strapi.plugins['users-permissions'].services.user.edit({id: recordId}, ctx.request.body);
+      } catch (err) {
+        console.log(err)
+        ctx.body = err;
+      }
+    } else if (role === 'administrator'){
+      try {
         entity = await strapi.plugins['users-permissions'].services.user.edit({id: recordId}, ctx.request.body);
       } catch (err) {
         console.log(err)
@@ -124,7 +129,6 @@ module.exports = {
 
 
     for await (const uPerm of userPermissions) {
-
       console.log(uPerm)
       entity = await strapi.plugins['users-permissions'].services.user.edit({id: uPerm.id}, {
           userPermissions: {
