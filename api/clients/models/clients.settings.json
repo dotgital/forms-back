@@ -32,23 +32,32 @@
       "component": "activity-log.activity-log"
     },
     "createdBy": {
-      "via": "createdClients",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "createdClients"
     },
     "modifiedBy": {
-      "via": "modifiedClients",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "modifiedClients"
     },
     "assignedTo": {
-      "via": "assignedClients",
       "plugin": "users-permissions",
       "collection": "user",
+      "via": "assignedClients",
       "dominant": true
     },
     "recordName": {
       "type": "string"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

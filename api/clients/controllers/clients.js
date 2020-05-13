@@ -74,6 +74,7 @@ module.exports = {
     }
     ctx.request.body.recordName = `${ctx.request.body.firstName} ${ctx.request.body.lastName}`
 
+    console.log(ctx.request.body)
     const currentUser = ctx.state.user;
     if (ctx.is('multipart')) {
       const { data, files } = parseMultipartData(ctx);

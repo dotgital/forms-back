@@ -55,16 +55,16 @@
       "configurable": false
     },
     "createdClients": {
-      "collection": "clients",
-      "via": "createdBy"
+      "via": "createdBy",
+      "collection": "clients"
     },
     "modifiedClients": {
-      "collection": "clients",
-      "via": "modifiedBy"
+      "via": "modifiedBy",
+      "collection": "clients"
     },
     "assignedClients": {
-      "collection": "clients",
-      "via": "assignedTo"
+      "via": "assignedTo",
+      "collection": "clients"
     },
     "company": {
       "model": "company",
