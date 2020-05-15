@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fields",
+  "info": {
+    "name": "fields"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "contentTypes": {
+      "type": "enumeration",
+      "enum": [
+        "clients",
+        "users",
+        "servicesType"
+      ]
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "tableVisible": {
+      "type": "boolean"
+    },
+    "tablePosition": {
+      "type": "integer"
+    }
+  }
+}

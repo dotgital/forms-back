@@ -17,8 +17,16 @@
       }
     },
     {
-      "method": "POST",
-      "path": "/table-data/:module",
+      "method": "GET",
+      "path": "/table-data-columns/:contentType",
+      "handler": "endpoint.tableDataColumns",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/table-data/:contentType/:model",
       "handler": "endpoint.tableData",
       "config": {
         "policies": []

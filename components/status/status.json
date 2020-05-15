@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_status_statuses",
+  "info": {
+    "name": "status",
+    "icon": "prescription-bottle"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  }
+}

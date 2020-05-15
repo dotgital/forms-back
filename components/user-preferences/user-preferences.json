@@ -15,6 +15,16 @@
       "type": "component",
       "repeatable": true,
       "component": "list-view.list-view"
+    },
+    "filtersListView": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-view.list-view"
+    },
+    "servicesTypeListView": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-view.list-view"
     }
   }
 }

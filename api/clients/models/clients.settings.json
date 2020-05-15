@@ -32,19 +32,19 @@
       "component": "activity-log.activity-log"
     },
     "createdBy": {
+      "via": "createdClients",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "createdClients"
+      "model": "user"
     },
     "modifiedBy": {
+      "via": "modifiedClients",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "modifiedClients"
+      "model": "user"
     },
     "assignedTo": {
+      "via": "assignedClients",
       "plugin": "users-permissions",
       "collection": "user",
-      "via": "assignedClients",
       "dominant": true
     },
     "recordName": {
@@ -58,6 +58,9 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "serviceType": {
+      "type": "string"
     }
   }
 }

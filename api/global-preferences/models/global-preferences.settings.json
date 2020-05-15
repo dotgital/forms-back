@@ -23,6 +23,19 @@
       "type": "component",
       "repeatable": false,
       "component": "permissions.permissions"
+    },
+    "filters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fields.fields"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "status.status"
+    },
+    "servicesTypes": {
+      "collection": "services-type"
     }
   }
 }

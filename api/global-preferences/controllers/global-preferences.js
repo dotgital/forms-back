@@ -55,6 +55,10 @@ module.exports = {
       }
     }
 
+    if(settingType == 'servicesType'){
+      response = response.servicesType;
+    }
+
     return response;
   }
 };
