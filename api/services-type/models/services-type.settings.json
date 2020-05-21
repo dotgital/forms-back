@@ -9,12 +9,13 @@
     "timestamps": true
   },
   "attributes": {
-    "label": {
-      "type": "string",
-      "required": true,
-      "unique": true
-    },
     "recordName": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "string"
+    },
+    "serviceName": {
       "type": "string"
     }
   }
