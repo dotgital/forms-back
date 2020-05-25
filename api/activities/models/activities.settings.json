@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities",
+  "info": {
+    "name": "activities"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "subject": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "activities"
+    },
+    "recordChanges": {
+      "type": "component",
+      "repeatable": true,
+      "component": "record-changes.record-changes"
+    },
+    "servicesTemplates": {
+      "model": "settings-services-templates",
+      "via": "activities"
+    }
+  }
+}

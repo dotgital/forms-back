@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "settings_services_templates",
+  "info": {
+    "name": "settings-services-templates"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "recordName": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "string"
+    },
+    "serviceName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "dropdown-options.dropdown-options"
+    },
+    "activities": {
+      "via": "servicesTemplates",
+      "collection": "activities"
+    }
+  }
+}

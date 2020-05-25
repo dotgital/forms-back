@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `services-type` model.
+ * Lifecycle callbacks for the `settings-services-templates` model.
  */
 
 module.exports = {

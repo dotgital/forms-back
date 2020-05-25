@@ -110,6 +110,14 @@
       "type": "component",
       "repeatable": false,
       "component": "permissions.permissions"
+    },
+    "users__settings_columns": {
+      "collection": "settings-columns",
+      "via": "user"
+    },
+    "activities": {
+      "via": "user",
+      "collection": "activities"
     }
   }
 }

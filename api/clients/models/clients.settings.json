@@ -61,6 +61,10 @@
     },
     "serviceType": {
       "type": "string"
+    },
+    "services": {
+      "collection": "services",
+      "via": "client"
     }
   }
 }

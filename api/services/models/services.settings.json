@@ -1,22 +1,26 @@
 {
   "kind": "collectionType",
-  "collectionName": "services_types",
+  "collectionName": "services",
   "info": {
-    "name": "servicesType"
+    "name": "services"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
+    "status": {
+      "type": "string"
+    },
     "recordName": {
       "type": "string"
     },
-    "serviceType": {
+    "name": {
       "type": "string"
     },
-    "serviceName": {
-      "type": "string"
+    "client": {
+      "via": "services",
+      "model": "clients"
     }
   }
 }

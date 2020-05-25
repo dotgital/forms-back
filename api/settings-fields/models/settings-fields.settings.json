@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "fields",
+  "collectionName": "settings_fields",
   "info": {
-    "name": "fields"
+    "name": "settings-fields"
   },
   "options": {
     "increments": true,
@@ -10,8 +10,7 @@
   },
   "attributes": {
     "fieldName": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "label": {
       "type": "string"
@@ -33,7 +32,7 @@
       "repeatable": true,
       "component": "dropdown-options.dropdown-options"
     },
-    "contentTypes": {
+    "contentType": {
       "type": "string"
     }
   }

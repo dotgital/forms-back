@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/services-types",
-      "handler": "services-type.find",
+      "path": "/settings-columns",
+      "handler": "settings-columns.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/services-types/count",
-      "handler": "services-type.count",
+      "path": "/settings-columns/count",
+      "handler": "settings-columns.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/services-types/:id",
-      "handler": "services-type.findOne",
+      "path": "/settings-columns/:id",
+      "handler": "settings-columns.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/services-types",
-      "handler": "services-type.create",
+      "path": "/settings-columns",
+      "handler": "settings-columns.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/services-types/:id",
-      "handler": "services-type.update",
+      "path": "/settings-columns/:id",
+      "handler": "settings-columns.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/services-types/:id",
-      "handler": "services-type.delete",
+      "path": "/settings-columns/:id",
+      "handler": "settings-columns.delete",
       "config": {
         "policies": []
       }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_record_changes_record_changes",
+  "info": {
+    "name": "recordChanges",
+    "icon": "eraser"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string"
+    },
+    "oriVal": {
+      "type": "string"
+    },
+    "newVal": {
+      "type": "string"
+    }
+  }
+}

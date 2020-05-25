@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "settings-columns",
+  "info": {
+    "name": "settings-columns"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "tableVisible": {
+      "type": "boolean"
+    },
+    "tablePosition": {
+      "type": "integer"
+    },
+    "user": {
+      "via": "users__settings_columns",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

@@ -18,14 +18,6 @@
     },
     {
       "method": "GET",
-      "path": "/table-data-columns/:contentType",
-      "handler": "endpoint.tableDataColumns",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
       "path": "/table-data/:contentType/:model",
       "handler": "endpoint.tableData",
       "config": {

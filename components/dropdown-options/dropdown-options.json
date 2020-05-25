@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_status_dropdown_options",
+  "info": {
+    "name": "dropdownOptions",
+    "icon": "qrcode"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  }
+}

@@ -32,10 +32,7 @@
     "status": {
       "type": "component",
       "repeatable": true,
-      "component": "status.status"
-    },
-    "servicesTypes": {
-      "collection": "services-type"
+      "component": "dropdown-options.status"
     }
   }
 }
