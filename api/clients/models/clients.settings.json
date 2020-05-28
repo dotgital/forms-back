@@ -63,8 +63,8 @@
       "type": "string"
     },
     "services": {
-      "collection": "services",
-      "via": "client"
+      "via": "client",
+      "collection": "services"
     }
   }
 }

@@ -34,6 +34,14 @@
     },
     "contentType": {
       "type": "string"
+    },
+    "column": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "left",
+        "hidden"
+      ]
     }
   }
 }

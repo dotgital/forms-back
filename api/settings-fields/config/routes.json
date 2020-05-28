@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/settings-fields/multiple",
+      "handler": "settings-fields.multiple",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/settings-fields/:id",
       "handler": "settings-fields.update",

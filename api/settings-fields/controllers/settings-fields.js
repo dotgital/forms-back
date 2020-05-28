@@ -5,4 +5,21 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  multiple: async(ctx) => {
+    let entities;
+    const fields = ctx.request.body
+
+    entities = await Promise.all(fields.map(async (field) => {
+      await strapi.services['settings-fields'].update({id: field.id}, field);
+    }));
+
+    // for await (const field of fields) {
+    //   console.log(field)
+    //   await strapi.services['settings-fields'].update({id: field.id}, field);
+    // }
+
+    // console.log(entities);
+    return entities;
+  }
+};
