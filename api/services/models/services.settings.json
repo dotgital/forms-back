@@ -19,8 +19,8 @@
       "type": "string"
     },
     "client": {
-      "model": "clients",
-      "via": "services"
+      "via": "services",
+      "model": "clients"
     },
     "template": {
       "model": "settings-services-templates"

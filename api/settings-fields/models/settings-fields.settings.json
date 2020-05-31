@@ -42,6 +42,24 @@
         "left",
         "hidden"
       ]
+    },
+    "recordName": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Dropdown",
+        "Text",
+        "Number",
+        "Date"
+      ]
+    },
+    "defaultValue": {
+      "type": "string"
+    },
+    "position": {
+      "type": "integer"
     }
   }
 }
